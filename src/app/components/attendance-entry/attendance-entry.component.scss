@@ -1,0 +1,48 @@
+.head{
+    background-color: cadetblue;
+    color: black;
+    font-weight: 100;
+    border-radius: 5px;
+    border-color: aquamarine;
+}
+
+.tbl{
+    width: 100%;
+}
+
+
+
+select{
+  border: none;
+  background: transparent;
+}
+
+select option {
+  color: #424146;
+  background: #ffffff;
+}
+
+select ::after{
+  border: none;
+  
+}
+
+option {
+    background-color: #ffffff;
+    border-radius: 3px;
+    background-color: aqua;
+  }
+  
+  option:before {
+    display: none;
+    padding-right: 10px;
+    padding-left: 5px;
+  }
+
+option::after{
+  border: none;
+}
+  
+  option:hover:before {
+    display: inline;
+  }

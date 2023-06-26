@@ -1,0 +1,32 @@
+<table class="tbl">
+    <thead class='head'>
+      <tr >
+        <th >#</th>
+        <th >First</th>
+        <th >
+          <select #headDropdown  name="cars" id="cars" (change)="onSelected(headDropdown.value)">
+            <option value="{{item.id}}" *ngFor="let item of attendanceTypeList"> <fa-icon [icon]="item.icon"></fa-icon>{{item.name}}</option>
+           
+          </select>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of employeeData">
+        <th >{{item.id}}</th>
+        <td>{{item.nickName}}</td>
+        <td class="dropdown" style="text-align: center;">
+          <form action="">
+            <app-attendance-type></app-attendance-type>
+          </form>
+
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
+
+
+  <div *ngFor="let item of attendanceTypeList">
+    <fa-icon [icon]="item.icon"></fa-icon>  {{item.name}}
+  </div>

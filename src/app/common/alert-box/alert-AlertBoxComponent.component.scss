@@ -1,0 +1,28 @@
+.alert-box{
+    text-align: center;
+    width: 300px;
+    height: 130px;
+    border-radius: 2px;
+    border-color: black;
+    border-width: 1px;
+    font-size: large;
+    border-style: solid;
+    padding: 10px;
+    box-shadow: 3px 3px 3px gray;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.alert-box button{
+    margin: 5px;
+}
+
+.icon p{
+font-size: 60px;
+margin: 0;
+text-align: center;
+animation-duration: 2s;
+animation-iteration-count: infinite;
+}
+
+

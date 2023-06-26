@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-path:   "";
+
+$white : #f8fff8;
+$red : #fd7364;
+$yellow:#FEC868;
+$blue:#0096a7;
+$black:#4b4453;
+$gray:#b0a8b9;
+
+$main:#845ec2;
+$light:#dcb0ff;
+$highlight:#faccff;
+
+body{
+    background-color: $white;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+/* BUTTONS */
+button{
+    height: 30px;
+    width: 100px;
+    border-radius: 3px;
+    border: none; 
+}
+
+.btn-blue{background-color: $blue;}
+.btn-yellow{background-color: $yellow;}
+.btn-red{background-color: $red;}
+
+button:hover{
+    opacity: 110%;
+    box-shadow: 1px 1px 3px black;
+}
+
+.container{
+    padding: 20px;
+}
+
+

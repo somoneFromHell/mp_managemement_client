@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+$white : #f8fff8;
+$red : #fd7364;
+$yellow:#FEC868;
+$blue:#0096a7;
+$black:#4b4453;
+$gray:#b0a8b9;
+
+
+$main:#001C30;
+$main2:#176B87;
+$main3:#64CCC5;
+$main4:#DAFFFB;
+
+nav{
+    background-color: $main;
+    color: $main3;
+    padding: 10px;
+    border-radius: 2px;
+
+}
+
+nav a{
+    margin: 20px;
+    color: $main3;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+nav a:hover{
+    color: $main4
+
+}
+
+.dropdown{
+    border-radius: 3px;
+    background-color: red;
+}
+

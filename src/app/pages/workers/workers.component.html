@@ -1,0 +1,60 @@
+<div class="tbl">
+  <h1 *ngIf="workersList.length == 0">
+    Loading...
+  </h1>
+  <div *ngIf="workersList.length != 0" [ngClass]="{'hiden':!hideForm}">
+    <button class="btn btn-blue" (click)="goToform()"><fa-icon [icon]="add"></fa-icon> add</button>
+
+    <table>
+      <tr>
+        <th>id</th>
+        <th>full name</th>
+        <th>nick name</th>
+        <th>salary</th>
+        <th>type</th>
+        <th>available</th>
+        <th>action</th>
+
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="number"></td>
+        <td>
+          <app-select-employee-type></app-select-employee-type>
+        </td>
+        <td><select name="" id="">
+            <option value="">select one</option>
+            <option value="">available</option>
+            <option value="">All</option>
+            <option value="">Not available</option>
+          </select>
+        </td>
+        <td></td>
+
+      </tr>
+
+
+      <tr *ngFor="let Item of workersList">
+        <td>{{Item.id}}</td>
+        <td>{{Item.firstName+" "+Item.lastName}}</td>
+        <td>{{Item.nickName}}</td>
+        <td>{{Item.salary|currency}}</td>
+        <td>{{Item.workerType?.name}}</td>
+        <!-- <td [textContent]="Item.available ? 'available':'not available'" [ngClass]="{'font_color': Item.available}"></td> -->
+        <td [ngClass]="{'font_color_green': Item.available}"> <fa-icon [icon]="Item.available ? yas : no"></fa-icon>
+        </td>
+        <td> <a href=""><fa-icon [icon]="edit" class="font_color_green"></fa-icon></a> <a href=""><fa-icon
+              [icon]="delete" class="font_color_red"></fa-icon></a></td>
+      </tr>
+    </table>
+
+
+  </div>
+  <div [ngClass]="{'hiden':hideForm}">
+   <app-worker-form (operationAbort)="hideTheForm($event)"></app-worker-form>
+  </div>
+
+
+</div>
