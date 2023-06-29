@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { workersModel } from 'src/app/interface/workers';
 
 @Component({
   selector: 'app-worker-form',
@@ -20,7 +21,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
         </div>
 
         <div>
-          <app-select-employee-type></app-select-employee-type>
+        <label for="select">select Type</label>
+
+          <app-select-employee-type (getSelectedEmployeeType)="setTheValueOfType($event)" id="select"></app-select-employee-type>
         </div>
 
         <div>
@@ -30,11 +33,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
       <div>
         <div>
-          
           <label for="avl">available</label>
-          <input class="form-input" formControlName="available" type="checkbox" id="avl">
+          <input class="form-input" formControlName="available" type="checkbox" [defaultValue]="false" id="avl">
         </div>
-        <button class="btn btn-blue" >save</button>
+        <button class="btn btn-blue" (click)="sendFormData.emit(addWorkersForm.value)">save</button>
 
         <button class="btn btn-red" (click)="operationAbort.emit(true)">cancel</button>
       </div>
@@ -48,6 +50,7 @@ export class WorkerFormComponent {
 
   
   @Output() operationAbort =  new EventEmitter<boolean>();
+  @Output() sendFormData = new EventEmitter<any>();
   
 
   addWorkersForm = new FormGroup({
@@ -55,15 +58,17 @@ export class WorkerFormComponent {
     lastName: new FormControl('', Validators.required),
     nickName: new FormControl('', Validators.required),
     salary: new FormControl('', Validators.required),
-    type: new FormControl(''),
-    available: new FormControl()
+    workerTypeId: new FormControl(1),
+    available: new FormControl(false)
   })
-
-
-
 
   saveData() {
     console.log(this.addWorkersForm.value)
+  }
+
+  setTheValueOfType(selectedItemValue:unknown){
+    this.addWorkersForm.controls['workerTypeId'].setValue(Number(selectedItemValue))
+    console.log(selectedItemValue)
   }
 
 }

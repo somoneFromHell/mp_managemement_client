@@ -43,7 +43,7 @@
         <td>{{Item.salary|currency}}</td>
         <td>{{Item.workerType?.name}}</td>
         <!-- <td [textContent]="Item.available ? 'available':'not available'" [ngClass]="{'font_color': Item.available}"></td> -->
-        <td [ngClass]="{'font_color_green': Item.available}"> <fa-icon [icon]="Item.available ? yas : no"></fa-icon>
+        <td [ngClass]="Item.available ? 'font_color_green':'font_color_red'" > <fa-icon [icon]="Item.available ? yas : no"></fa-icon>
         </td>
         <td> <a href=""><fa-icon [icon]="edit" class="font_color_green"></fa-icon></a> <a href=""><fa-icon
               [icon]="delete" class="font_color_red"></fa-icon></a></td>
@@ -53,7 +53,7 @@
 
   </div>
   <div [ngClass]="{'hiden':hideForm}">
-   <app-worker-form (operationAbort)="hideTheForm($event)"></app-worker-form>
+   <app-worker-form (operationAbort)="hideTheForm($event)" (sendFormData)="insertNewWorkerData($event)"></app-worker-form>
   </div>
 
 

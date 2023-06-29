@@ -4,10 +4,7 @@
         <th >#</th>
         <th >First</th>
         <th >
-          <select #headDropdown  name="cars" id="cars" (change)="onSelected(headDropdown.value)">
-            <option value="{{item.id}}" *ngFor="let item of attendanceTypeList"> <fa-icon [icon]="item.icon"></fa-icon>{{item.name}}</option>
-           
-          </select>
+         <app-attendance-type></app-attendance-type>
         </th>
       </tr>
     </thead>
@@ -17,7 +14,7 @@
         <td>{{item.nickName}}</td>
         <td class="dropdown" style="text-align: center;">
           <form action="">
-            <app-attendance-type></app-attendance-type>
+            <app-attendance-type (getSelectedValue)="addSelectedValueToFormData($event,item.id)"></app-attendance-type>
           </form>
 
         </td>
@@ -27,6 +24,3 @@
   </table>
 
 
-  <div *ngFor="let item of attendanceTypeList">
-    <fa-icon [icon]="item.icon"></fa-icon>  {{item.name}}
-  </div>

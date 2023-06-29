@@ -1,6 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { faManatSign,faCircleXmark,faStar,faStarOfLife,faStarHalfStroke ,faStarHalfAlt} from '@fortawesome/free-solid-svg-icons';
 import { attandanceTypeModel, employeeModel } from 'src/app/interface/attandance';
+import { AttendanceService } from 'src/app/services/attendance.service';
 
 @Component({
   selector: 'app-attendance-entry',
@@ -8,44 +9,37 @@ import { attandanceTypeModel, employeeModel } from 'src/app/interface/attandance
   styleUrls: ['attendance-entry.component.scss']
 })
 export class AttendanceEntryComponent {
+
  
 
-  employeeData:employeeModel[] = [] 
+  employeeData:{id:number,nickName:string}[] = [] 
   attendanceTypeList:attandanceTypeModel[]=[]
   faCoffee=faManatSign
+
+  constructor( private service:AttendanceService){}
   
-  commonDecidedValue: any ;
   ngOnInit(){
     this.bindData()
-    console.log(this.commonDecidedValue)
   }
 
   bindData(){
-    this.employeeData=[
-      {id:1,nickName:'satyam'},
-      {id:2,nickName:'thakur'},
-      {id:3,nickName:'lambu'},
-      {id:4,nickName:'lalu'},
-      {id:3,nickName:'lambu'},
-      {id:5,nickName:'lala'},
-      {id:6,nickName:'chaurasiya'},
-    ]
+    this.service.getWorkerDataFotAtt().then(res=>{
+      if(res.error)console.error(res.error)
+      if(res.data)this.employeeData = res.data
+      console.log(res.data)
+    })
 
-    this.attendanceTypeList=[
-      {id:1,name:'absent',icon:faCircleXmark},
-      {id:2,name:'half',icon:faStar},
-      {id:3,name:'full',icon:faStarHalfStroke},
-      {id:4,name:'night',icon:faStarOfLife},
-      {id:5,name:'double',icon:faStarHalfAlt}
-    ]
 }
 
 
 onSelected(selected:string  ) {
-console.log(selected,this.commonDecidedValue)
 
  
 }
+
+addSelectedValueToFormData(selectedItem: string,changedId:number|undefined) {
+    console.log(selectedItem)
+  }
 
 
 

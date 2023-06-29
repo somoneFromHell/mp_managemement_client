@@ -13,12 +13,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TableComponent } from './common/table/table.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { DropdownComponent } from './common/dropdown/dropdown.component';
 import { CommonModule } from '@angular/common';
 import { WorkerFormComponent } from './components/worker-form/worker-form.component';
 import { SelectEmployeeTypeComponent } from './components/select-employee-type/select-employee-type.component';
 import { AttendanceTypeComponent } from './components/attendance-type/attendance-type.component';
-
+import { FormsModule } from '@angular/forms';
+      
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +30,6 @@ import { AttendanceTypeComponent } from './components/attendance-type/attendance
     DashboardComponent,
     TableComponent,
     LoginComponent,
-    DropdownComponent,
     WorkerFormComponent,
     SelectEmployeeTypeComponent,
     AttendanceTypeComponent
@@ -39,7 +38,8 @@ import { AttendanceTypeComponent } from './components/attendance-type/attendance
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,14 +6,24 @@ import { SupabaseService } from './supabase.service';
 })
 export class AttendanceService {
 
-  
-  constructor(private sb_service:SupabaseService){}
+
+  constructor(private sb_service: SupabaseService) { }
 
   async getAttendanceTypeList() {
 
     let { data, error } = await this.sb_service.supabaseClient
       .from('attandanceType')
       .select('id,name')
-      return { data, error }  }
+    return { data, error }
+  }
+
+  async getWorkerDataFotAtt() {
+
+    let { data, error } = await this.sb_service.supabaseClient
+      .from('workers')
+      .select('id,nickName').eq('available',true)
+    console.log(data)
+    return { data, error }
+  }
 
 }

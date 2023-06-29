@@ -43,5 +43,14 @@ export class WorkersComponent {
       this.workersList = <any>data
     })
   }
+  
+  insertNewWorkerData(newworkerData:workersModel){
+    this.service.addNewWorker(newworkerData).then(({data,error})=>{
+      if(error){
+        console.error(error)
+      }
+      console.log(data)
+    })
+  }
 
 }
