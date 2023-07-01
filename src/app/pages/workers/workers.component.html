@@ -45,7 +45,7 @@
         <!-- <td [textContent]="Item.available ? 'available':'not available'" [ngClass]="{'font_color': Item.available}"></td> -->
         <td [ngClass]="Item.available ? 'font_color_green':'font_color_red'" > <fa-icon [icon]="Item.available ? yas : no"></fa-icon>
         </td>
-        <td> <a href=""><fa-icon [icon]="edit" class="font_color_green"></fa-icon></a> <a href=""><fa-icon
+        <td> <a href=""><fa-icon [icon]="edit" class="font_color_green"></fa-icon></a> <a [swal]="['Oops!', 'This is not implemented yet :/', 'warning']" href=""><fa-icon
               [icon]="delete" class="font_color_red"></fa-icon></a></td>
       </tr>
     </table>

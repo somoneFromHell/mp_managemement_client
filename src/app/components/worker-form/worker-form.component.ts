@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { workersModel } from 'src/app/interface/workers';
 
@@ -48,7 +48,6 @@ import { workersModel } from 'src/app/interface/workers';
 })
 export class WorkerFormComponent {
 
-  
   @Output() operationAbort =  new EventEmitter<boolean>();
   @Output() sendFormData = new EventEmitter<any>();
   
