@@ -1,0 +1,23 @@
+/* employee-form.component.css */
+.form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-size: small;
+  }
+  
+  input[type="text"],
+  input[type="email"] {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+
+  input:focus {
+    outline: none;
+    border-color: #007bff;
+  }

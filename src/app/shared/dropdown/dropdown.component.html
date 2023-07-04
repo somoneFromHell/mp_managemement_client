@@ -1,0 +1,13 @@
+<!-- custom-dropdown.component.html -->
+<div class="custom-dropdown">
+    <a class="dropdown-display" (click)="toggleOptions()">
+      <i class="fas {{selectedOption.icon}} {{selectedOption.color}}"></i>
+      <span>{{ selectedOption.name }}</span>
+    </a>
+    <ng-container *ngIf="showOptions">
+      <ul class="dropdown-options" *ngFor="let option of dropdownOptions">
+        <li (click)="onOptionSelected(option)"> <i class="fas {{option.icon}} {{option.color}}"></i> {{option.name}}</li>
+      </ul>
+    </ng-container>
+    
+  </div>

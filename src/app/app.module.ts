@@ -11,9 +11,8 @@ import { AttendanceComponent } from './pages/attendance/attendance.component';
 import { AttendanceEntryComponent } from './pages/attendance/attendance-entry/attendance-entry.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/users/login/login.component';
-import { SelectEmployeeTypeComponent } from './shared/select-employee-type/select-employee-type.component';
-import { AttendanceTypeComponent } from './shared/attendance-type/attendance-type.component';
 import { WorkersModule } from './pages/workers/workers.module';
+import { SharedModule } from './shared/shared.module';
       
 @NgModule({
   declarations: [
@@ -23,8 +22,6 @@ import { WorkersModule } from './pages/workers/workers.module';
     AttendanceEntryComponent,
     DashboardComponent,
     LoginComponent,
-    SelectEmployeeTypeComponent,
-    AttendanceTypeComponent,
 
   ],
   imports: [
@@ -33,10 +30,11 @@ import { WorkersModule } from './pages/workers/workers.module';
     FontAwesomeModule,
     ReactiveFormsModule,
     WorkersModule,
+    SharedModule,
     FormsModule,
     SweetAlert2Module.forRoot()
   ],
-  exports:[SelectEmployeeTypeComponent],
+  exports:[],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -6,7 +6,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WorkersComponent } from './workers.component';
-import { WorkersDetailsComponent } from '../workers-details/workers-details.component';
+import { WorkersDetailsComponent } from './workers-details/workers-details.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -21,12 +22,14 @@ import { WorkersDetailsComponent } from '../workers-details/workers-details.comp
     CommonModule,
     FontAwesomeModule,
     SweetAlert2Module.forRoot(),
-    ReactiveFormsModule
-
-  ],exports:[
+    ReactiveFormsModule,
+    SharedModule
+  ],
+  exports:[
     WorkerTableComponent,
     WorkerFormComponent,
     WorkersDetailsComponent
+
   ]
 })
 export class WorkersModule { }

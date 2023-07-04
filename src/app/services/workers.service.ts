@@ -26,6 +26,8 @@ export class WorkersService {
     return { data, error }
   }
 
+
+
   async addNewWorker(workerColumn:workersModel) {
 
     const { data, error } = await this.sbService.supabaseClient

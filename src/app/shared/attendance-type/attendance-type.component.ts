@@ -1,41 +1,47 @@
-import { Component, EventEmitter, Input, Output} from '@angular/core';
-import { attandanceTypeModel } from 'src/app/interface/attandance';
+import { Component} from '@angular/core';
 import { AttendanceService } from 'src/app/services/attendance.service';
-import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+
+
+export interface AttendanceTypeDropdown{
+  name:string,
+  icon:string,
+  color:string
+}
 
 @Component({
   selector: 'app-attendance-type',
-  template: `
-      <select name="choice" [(ngModel)]="selectedValue" (change)="getSelectedValue.emit(selectedValue)" >
-    <option value="">-- select --</option>
-  <option value="{{item.id}}" *ngFor="let item of attendanceTypedata"><fa-icon [icon]="star"></fa-icon> {{item.name}}</option>
-</select> 
-  `,
-  styles: [
-  ]
+  templateUrl:'attendance-type.component.html',
+  styleUrls: ['./attendance-type.component.scss']
 })
 export class AttendanceTypeComponent {
 
-  @Output() getSelectedValue = new EventEmitter<string>();
+  constructor( private atService:AttendanceService){}
+  
 
-  attendanceTypedata: attandanceTypeModel[] = []
-  loading = false
-  disabled = false
-  star: IconProp = faStar;
-  selectedValue:string = '1';
+showOptions = false;
+dropdownOptions:AttendanceTypeDropdown[] = [];
+selectedOption:AttendanceTypeDropdown = {name:'-select-',icon:'fa-caret-down',color:''}
 
-  constructor(private service: AttendanceService) { }
   ngOnInit() {
-    this.getAttendanceTypeData()
+    console.log(this.dropdownOptions)
+    this.bindData()
   }
 
-  getAttendanceTypeData() {
-    this.service.getAttendanceTypeList().then((res: any) => {
-      if (res.error) {
-        this.loading = true
-      }
-      this.attendanceTypedata = res.data
+  toggleOptions(){
+    
+    this.showOptions = !this.showOptions 
+    console.log(this.showOptions)
+  }
+
+  onOptionSelected(selectedItem: AttendanceTypeDropdown) {
+      this.selectedOption = selectedItem
+      this.toggleOptions()
+  }
+
+  bindData(){
+    this.atService.getAttendanceTypeList().then((res:any)=>{
+      this.dropdownOptions = res
     })
   }
+
 }

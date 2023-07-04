@@ -13,8 +13,12 @@ export class AttendanceService {
 
     let { data, error } = await this.sb_service.supabaseClient
       .from('attandanceType')
-      .select('id,name')
-    return { data, error }
+      .select('id,name,color,icon')
+
+      if(error){
+        console.error(error)
+      }
+    return data
   }
 
   async getWorkerDataFotAtt() {

@@ -1,5 +1,15 @@
 <nav>
-  <a class="nav-link active" aria-current="page" routerLink="dashboard"> <fa-icon [icon]="dashboardIcon"></fa-icon> Dashboard</a>
-  <a class="nav-link" routerLink="employees"><fa-icon [icon]="employeesIcon"></fa-icon> employee</a>
-  <a class="nav-link" routerLink="attendance"> <fa-icon [icon]="attandanceIcon"></fa-icon> attandance</a>
+  <div class="navbar">
+    <div class="logo">
+      <i class="fas fa-lightbulb"></i>
+            <span class="company-name">Crew Manager</span>
+    </div>
+    <div class="nav-links">
+      <ng-container *ngFor="let item of navlinks">
+        <a [ngClass]="{'active': item.id === activeLink }" routerLink="{{item.routerLink}}" (click)="makeLinkActive(item.id)">
+          <i class="fas {{item.icon}}"></i> {{item.tag}}
+        </a>
+      </ng-container>
+    </div>
+  </div>
 </nav>
