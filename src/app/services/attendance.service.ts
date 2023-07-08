@@ -26,7 +26,6 @@ export class AttendanceService {
     let { data, error } = await this.sb_service.supabaseClient
       .from('workers')
       .select('id,nickName').eq('available',true)
-    console.log(data)
     return { data, error }
   }
 

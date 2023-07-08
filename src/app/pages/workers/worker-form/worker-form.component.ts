@@ -5,6 +5,7 @@ import { Component} from '@angular/core';
   styleUrls:['./worker-form.component.scss']
 })
 export class WorkerFormComponent {
+showForm: boolean = false;
 
 
 

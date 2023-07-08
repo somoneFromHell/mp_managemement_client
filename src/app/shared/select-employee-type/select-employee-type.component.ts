@@ -1,21 +1,28 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { workerTypeModel, workersTypeModel } from 'src/app/interface/workers';
 import { WorkersService } from 'src/app/services/workers.service';
+import { DropdownModel } from '../dropdown/dropdown.component';
+
+export interface workersTypeModel{
+  id ?: number,
+  workerTypeTitle:string,
+  icon:string,
+  color:string
+}
 
 @Component({
   selector: 'app-select-employee-type',
-  template: `
- `,
+  template: '<app-dropdown [dropdownOptions]="SlelecttEmployeedropdownOptions" (reciveSelectedItem)="onEmployeeSelected($event)" ></app-dropdown>',
   styles: [
   ]
 })
 export class SelectEmployeeTypeComponent {
+
 @Output() getSelectedEmployeeType = new EventEmitter() 
   
-  workersTypedata:workersTypeModel[] = []
   selectedEmployeeType:string = ''
   loading = false
   disabled =false
+  SlelecttEmployeedropdownOptions:DropdownModel[] = []
 
   constructor(private service:WorkersService){}
   ngOnInit(){
@@ -24,11 +31,17 @@ export class SelectEmployeeTypeComponent {
 
   getWorkersTypeData(){
     this.service.getWorkerTypeList().then((res:any)=>{
-      if(res.error){
-        this.loading = true
-        console.log(res.error)
-      }
-      this.workersTypedata =res.data
+      this.SlelecttEmployeedropdownOptions = res.map((item:any)=>{return{
+        id:item.id,
+        name:item.workerTypeTitle,
+        color:item.color,
+        icon:item.icon
+      }})
     })
+  }
+
+
+  onEmployeeSelected($event: DropdownModel) {
+    console.log($event)
   }
 }

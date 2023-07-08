@@ -1,8 +1,7 @@
+@import '../../../styles.scss';
 
-$color-primary: #2C3333;
-$color-secondary: #2E4F4F;
-$color-tertiary: #0E8388;
-$color-quaternary: #CBE4DE;
+
+
 
 
 
@@ -21,6 +20,9 @@ $color-quaternary: #CBE4DE;
   .logo {
     display: flex;
     align-items: center;
+    font-size: 22px;
+    color: rgb(241, 241, 121);
+    padding-left: 10px;
 
     .logo-icon {
       width: 40px; // Adjust as per your logo size
@@ -53,6 +55,7 @@ $color-quaternary: #CBE4DE;
         background-color: $color-tertiary;
       }
     }
+    
   }
 }
 

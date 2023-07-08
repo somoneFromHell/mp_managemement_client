@@ -1,6 +1,6 @@
 export interface workerTypeModel{
     id ?: number,
-    name:string
+    workerTypeTitle:string
 }
 
 export interface workersModel{
@@ -14,7 +14,3 @@ export interface workersModel{
     available:boolean
 }
 
-export interface workersTypeModel{
-    id ?: number,
-    name:string
-}

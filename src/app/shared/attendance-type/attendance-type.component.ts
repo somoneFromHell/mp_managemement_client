@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import { AttendanceService } from 'src/app/services/attendance.service';
+import { DropdownModel } from '../dropdown/dropdown.component';
 
 
 export interface AttendanceTypeDropdown{
@@ -14,23 +15,24 @@ export interface AttendanceTypeDropdown{
   styleUrls: ['./attendance-type.component.scss']
 })
 export class AttendanceTypeComponent {
+onAttandenceTypeSelected($event: DropdownModel) {
+console.log($event)
+}
 
   constructor( private atService:AttendanceService){}
   
 
 showOptions = false;
-dropdownOptions:AttendanceTypeDropdown[] = [];
+AttdropdownOptions:AttendanceTypeDropdown[] = [];
 selectedOption:AttendanceTypeDropdown = {name:'-select-',icon:'fa-caret-down',color:''}
 
   ngOnInit() {
-    console.log(this.dropdownOptions)
     this.bindData()
   }
 
   toggleOptions(){
     
     this.showOptions = !this.showOptions 
-    console.log(this.showOptions)
   }
 
   onOptionSelected(selectedItem: AttendanceTypeDropdown) {
@@ -40,7 +42,7 @@ selectedOption:AttendanceTypeDropdown = {name:'-select-',icon:'fa-caret-down',co
 
   bindData(){
     this.atService.getAttendanceTypeList().then((res:any)=>{
-      this.dropdownOptions = res
+      this.AttdropdownOptions = res
     })
   }
 

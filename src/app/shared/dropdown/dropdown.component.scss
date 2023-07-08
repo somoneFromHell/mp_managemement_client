@@ -1,10 +1,5 @@
 /* custom-dropdown.component.scss */
-
-$red:#e67f65;
-$yellow:#dada2f;
-$green: #00c92c;
-$purple:#845ec2;
-$blue:#0081cf;
+@import '../../../styles.scss';
 
 
 
@@ -16,29 +11,42 @@ $blue:#0081cf;
   .dropdown-display {
     display: flex;
     align-items: center;
-    padding: 8px;
+    padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+    min-width: 6rem;
     cursor: pointer;
-  }
-  
-  .dropdown-display i {
-    margin-right: 5px;
+    i {
+      margin-right: 0.3rem;
+    }
+    
   }
   
   .dropdown-options {
+    position: absolute;
+    z-index: 1;
     top: 100%;
     left: 0;
-    z-index: 1;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      
+    }
+    
+    li {
+       min-width: 6rem;
+      cursor: pointer;
+      padding: 5px;
+    }
+
   }
   
   .dropdown-options li {
-    padding: 8px;
     cursor: pointer;
   }
   

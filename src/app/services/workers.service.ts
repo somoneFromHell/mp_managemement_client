@@ -12,18 +12,19 @@ export class WorkersService {
   constructor( private sbService:SupabaseService) { }
 
   async getWorkerData() {
-
-    let { data, error } = await this.sbService.supabaseClient.from('workers').select(`id,firstName,lastName,nickName,salary,workerType(name),available`)
-
-    return { data, error }
+    let { data, error } = await this.sbService.supabaseClient.from('workers').select(`id,firstName,lastName,nickName,salary,workerType(workerTypeTitle),available`)
+      if(error)console.warn(error)
+    return data
   }
 
   async getWorkerTypeList() {
 
     let { data, error } = await this.sbService.supabaseClient
       .from('workerType')
-      .select('id,name')
-    return { data, error }
+      .select('id,workerTypeTitle,icon,color')
+
+      if (error)console.error(error)
+    return data
   }
 
 

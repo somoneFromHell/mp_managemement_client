@@ -1,4 +1,6 @@
 /* style.css */
+
+
 .employee-table {
     width: 100%;
     border-collapse: collapse;
@@ -8,6 +10,13 @@
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    a{
+      padding: 5px;
+    }
+    a:hover{
+      background-color: #fff;
+      border-radius: 3px;
+    }
   }
   
   th {
@@ -21,5 +30,13 @@
   
   tbody tr:hover {
     background-color: #e5e5e5;
+  }
+
+  .icon-yes {
+    color: green;
+  }
+  
+  .icon-no {
+    color: red;
   }
   

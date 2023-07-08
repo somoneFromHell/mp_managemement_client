@@ -1,26 +1,35 @@
 <!-- table.html -->
+<button class="btn btn-blue" type="submit" (click)="onClickAdd()">add</button>
+
 <table class="employee-table">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Email</th>
-      <th>Department</th>
-      <th>Salary</th>
+      <th>Nick name</th>
+      <th>salary</th>
+      <th>worker Type</th>
+      <th>available</th>
+      <th>action1</th>
+
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>John Doe</td>
-      <td>john.doe@example.com</td>
-      <td>IT</td>
-      <td>$5000</td>
-    </tr>
-    <tr>
-      <td>Jane Smith</td>
-      <td>jane.smith@example.com</td>
-      <td>HR</td>
-      <td>$4500</td>
-    </tr>
+    <ng-container *ngFor="let item of workersList">
+      <tr>
+        <td>{{item.firstName+" "+item.lastName}}</td>
+        <td>{{item.nickName}}</td>
+        <td>{{item.salary}}</td>
+        <td>{{item.workerType?.workerTypeTitle}}</td>
+        <td><i [ngClass]="item.available ? 'icon-yes fa-check':'icon-no fa-times'" class="fas"></i></td>
+        <td><a ><i class="fas fa-trash icon-no"></i></a> <a><i class="fas fa-pen icon-yes"></i></a></td>
+      </tr>
+    </ng-container>
+    
     <!-- Add more rows as needed -->
   </tbody>
 </table>
+
+
+<app-modal [showModal]="showForm">
+  <app-worker-form></app-worker-form>
+</app-modal>

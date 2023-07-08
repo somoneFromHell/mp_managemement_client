@@ -1,7 +1,8 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { AttendanceService } from 'src/app/services/attendance.service';
 
 export interface DropdownModel{
+  id ?:number
   name:string,
   icon:string,
   color:string
@@ -14,36 +15,38 @@ export interface DropdownModel{
 })
 export class DropdownComponent {
 
-  @Input() dropdownOptions:DropdownModel[] = [];
-  @Output() reciveSelectedItem:number = 0
   showOptions = false;
+  private dropdownElement?: HTMLElement;
+
+  @Input() dropdownOptions:DropdownModel[] = [];
+  @Output() reciveSelectedItem:EventEmitter<DropdownModel> = new EventEmitter<DropdownModel>();
+  @HostListener('document:click', ['$event'])
+  handleClick(event:MouseEvent) {
+    const clickedOnDrpdown = this.dropdownElement?.contains(event.target as Node)
+    if (!clickedOnDrpdown) {
+      this.showOptions = false;
+    }
+  }
   
   selectedOption:DropdownModel = {name:'-select-',icon:'fa-caret-down',color:''}
   
-
-
-  constructor( private atService:AttendanceService){}
-
     ngOnInit() {
-      console.log(this.dropdownOptions)
-      this.bindData()
     }
   
     toggleOptions(){
-      
       this.showOptions = !this.showOptions 
-      console.log(this.showOptions)
     }
   
-    onOptionSelected(selectedItem: any) {
-        this.selectedOption = selectedItem
+    onOptionSelected(selectedItem: DropdownModel) {
+      this.selectedOption = selectedItem
+        this.reciveSelectedItem.emit(selectedItem)
         this.toggleOptions()
     }
-  
-    bindData(){
-      this.atService.getAttendanceTypeList().then((res:any)=>{
-        this.dropdownOptions = res
-      })
+
+    assignDropdownElement(element: HTMLElement) {
+      this.dropdownElement = element;
     }
+  
+
   
 }

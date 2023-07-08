@@ -4,6 +4,7 @@ import { AttendanceTypeComponent } from './attendance-type/attendance-type.compo
 import { SelectEmployeeTypeComponent } from './select-employee-type/select-employee-type.component';
 import { WorkersModule } from '../pages/workers/workers.module';
 import { DropdownComponent } from './dropdown/dropdown.component';
+import { ModalComponent } from './modal/modal.component';
 
 
 
@@ -11,7 +12,8 @@ import { DropdownComponent } from './dropdown/dropdown.component';
   declarations: [
     AttendanceTypeComponent,
     SelectEmployeeTypeComponent,
-    DropdownComponent
+    DropdownComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule
@@ -19,7 +21,8 @@ import { DropdownComponent } from './dropdown/dropdown.component';
   exports:[
     AttendanceTypeComponent,
     SelectEmployeeTypeComponent,
-    DropdownComponent
+    DropdownComponent,
+    ModalComponent
 
   ]
 })

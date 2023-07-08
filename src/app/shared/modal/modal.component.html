@@ -1,0 +1,13 @@
+  <!-- Modal content -->
+  
+  
+  <ng-container *ngIf="showModal">
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="modal-close" (click)="closeModal()">&times;</span>
+          <h2>Modal Box</h2>
+          <ng-content></ng-content>
+        </div>
+      </div>
+  </ng-container>
+  

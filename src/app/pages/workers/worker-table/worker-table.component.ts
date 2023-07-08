@@ -9,6 +9,7 @@ import { faCircleCheck ,faCircleXmark,faPenToSquare,faTrashAlt,faPlusSquare} fro
   styleUrls:['./worker-table.component.scss']
 })
 export class WorkerTableComponent {
+ showForm: boolean = false;
 
   constructor( private service:WorkersService){}
 
@@ -22,6 +23,13 @@ export class WorkerTableComponent {
   hideForm = true;
 
   ngOnInit(){
+    this.service.getWorkerData().then((res:any)=>{
+      this.workersList = res
+    })
+  }
+
+  onClickAdd(){
+    this.showForm = !this.showForm
   }
 
 

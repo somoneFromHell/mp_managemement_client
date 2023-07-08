@@ -1,13 +1,16 @@
 <!-- custom-dropdown.component.html -->
-<div class="custom-dropdown">
-    <a class="dropdown-display" (click)="toggleOptions()">
+<div class="custom-dropdown" #dropdownContainer>
+    <div class="dropdown-display" (click)="toggleOptions();assignDropdownElement(dropdownContainer)" >
       <i class="fas {{selectedOption.icon}} {{selectedOption.color}}"></i>
       <span>{{ selectedOption.name }}</span>
-    </a>
+    </div>
     <ng-container *ngIf="showOptions">
-      <ul class="dropdown-options" *ngFor="let option of dropdownOptions">
-        <li (click)="onOptionSelected(option)"> <i class="fas {{option.icon}} {{option.color}}"></i> {{option.name}}</li>
-      </ul>
+      <div class="dropdown-options">
+
+        <ul  *ngFor="let option of dropdownOptions">
+          <li (click)="onOptionSelected(option)"> <i class="fas {{option.icon}} {{option.color}}"></i> {{option.name}}</li>
+        </ul>
+      </div>
     </ng-container>
     
   </div>

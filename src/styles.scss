@@ -1,20 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
-@font-path:   "";
 
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
 
 $white : #f8fff8;
-$red : #fd7364;
-$yellow:#FEC868;
+$red : #ff4040;
+$yellow:#f6fa00;
 $blue:#0096a7;
 $black:#4b4453;
 $gray:#b0a8b9;
+$green:#459c1c;
+$purple:#700e88;
 
-$main:#845ec2;
-$light:#dcb0ff;
-$highlight:#faccff;
+$color-primary: #2C3333;
+$color-secondary: #2E4F4F;
+$color-tertiary: #0E8388;
+$color-quaternary: #CBE4DE;
+
+
 
 body{
     background-color: $white;
@@ -41,6 +45,19 @@ button:hover{
 
 .container{
     padding: 20px;
+}
+
+input{
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
 }
 
 

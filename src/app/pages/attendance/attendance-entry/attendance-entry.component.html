@@ -1,0 +1,21 @@
+
+<table class="employee-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th><app-attendance-type></app-attendance-type></th>
+       
+  
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let item of employeeData">
+        <tr>
+          <td>{{item.nickName}}</td>
+         <td><app-attendance-type></app-attendance-type></td>
+        </tr>
+      </ng-container>
+      
+      <!-- Add more rows as needed -->
+    </tbody>
+  </table>
